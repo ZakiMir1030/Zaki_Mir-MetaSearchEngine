@@ -1,0 +1,170 @@
+2026-08-07 12:52:45,059 ERROR:searx: Error while getting the version: fatal: not a git repository (or any of the parent directories): .git
+
+2026-08-07 12:52:45,119 ERROR:searx: Error while getting the git URL & branch: fatal: not a git repository (or any of the parent directories): .git
+
+2026-08-07 12:52:45,411 WARNING:searx.cache: [DATA_CACHE] hash token changed: truncate all cache tables
+2026-08-07 12:52:45,439 WARNING:searx.cache: [ENGINES_CACHE] hash token changed: truncate all cache tables
+2026-08-07 12:52:45,477 ERROR:searx.engines: (PID 10616) ahmia: can't register engine (loading engine failed)
+2026-08-07 12:52:45,599 ERROR:searx.engines: (PID 10616) torch: can't register engine (loading engine failed)
+2026-08-07 12:52:45,654 WARNING:searx.botdetection.config: missing config file: \etc\searxng\limiter.toml
+2026-08-07 12:52:45,714 ERROR:searx.searx.search.processor: (PID 10616) wikidata: engine INIT failed, exception: All connection attempts failed
+Traceback (most recent call last):
+  File "C:\Users\mirmo\Desktop\searxng-master\.codex-venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\mirmo\Desktop\searxng-master\.codex-venv\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mirmo\Desktop\searxng-master\.codex-venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\mirmo\Desktop\searxng-master\.codex-venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mirmo\Desktop\searxng-master\.codex-venv\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\mirmo\Desktop\searxng-master\.codex-venv\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mirmo\Desktop\searxng-master\.codex-venv\Lib\site-packages\httpcore\_async\connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mirmo\Desktop\searxng-master\.codex-venv\Lib\site-packages\httpcore\_backends\auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mirmo\Desktop\searxng-master\.codex-venv\Lib\site-packages\httpcore\_backends\anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mirmo\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\mirmo\Desktop\searxng-master\.codex-venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mirmo\Desktop\searxng-master\searx\search\processors\abstract.py", line 158, in init_engine
+    init_ok = self.engine.init(eng_setting)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mirmo\Desktop\searxng-master\searx\engines\wikidata.py", line 839, in init
+    init_wikidata_properties()
+  File "C:\Users\mirmo\Desktop\searxng-master\searx\engines\wikidata.py", line 866, in init_wikidata_properties
+    jsonresponse = send_wikidata_query(query, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mirmo\Desktop\searxng-master\searx\engines\wikidata.py", line 473, in send_wikidata_query
+    http_response = get(SPARQL_ENDPOINT_URL + "?" + urlencode({"query": query}), headers=get_headers(), **kwargs)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mirmo\Desktop\searxng-master\searx\network\__init__.py", line 175, in get
+    return request('get', url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mirmo\Desktop\searxng-master\searx\network\__init__.py", line 106, in request
+    return future.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mirmo\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mirmo\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Users\mirmo\Desktop\searxng-master\searx\network\network.py", line 304, in request
+    return await self.call_client(False, method, url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mirmo\Desktop\searxng-master\searx\network\network.py", line 300, in call_client
+    raise e
+  File "C:\Users\mirmo\Desktop\searxng-master\searx\network\network.py", line 285, in call_client
+    response = await client.request(method, url, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mirmo\Desktop\searxng-master\.codex-venv\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mirmo\Desktop\searxng-master\.codex-venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mirmo\Desktop\searxng-master\.codex-venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mirmo\Desktop\searxng-master\.codex-venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mirmo\Desktop\searxng-master\.codex-venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mirmo\Desktop\searxng-master\.codex-venv\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mirmo\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\mirmo\Desktop\searxng-master\.codex-venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: All connection attempts failed
+2026-08-07 12:52:45,723 ERROR:searx.searx.search.processor: (PID 10616) wikidata: engine init was not successful
+2026-08-07 12:52:45,723 ERROR:searx.search.processors: (PID 10616) wikidata: can't register engines processor (init engine failed)
+2026-08-07 13:29:33,278 ERROR:searx.botdetection: X-Forwarded-For nor X-Real-IP header is set!
+2026-08-07 13:29:34,451 WARNING:searx.engines.duckduckgo: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'html.duckduckgo.com')) False
+2026-08-07 13:29:34,452 WARNING:searx.engines.wikipedia: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'fr.wikipedia.org')) False
+2026-08-07 13:29:34,453 WARNING:searx.engines.brave: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'search.brave.com')) False
+2026-08-07 13:29:34,453 WARNING:searx.engines.startpage: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.startpage.com')) False
+2026-08-07 13:29:34,453 WARNING:searx.engines.google cse: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.google.com')) False
+2026-08-07 13:30:30,436 WARNING:searx.engines.wikipedia: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'fr.wikipedia.org')) False
+2026-08-07 13:30:30,443 WARNING:searx.engines.google cse: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.google.com')) False
+2026-08-07 13:30:30,471 WARNING:searx.engines.duckduckgo: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'html.duckduckgo.com')) False
+2026-08-07 13:30:30,487 WARNING:searx.engines.startpage: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.startpage.com')) False
+2026-08-07 13:30:30,491 WARNING:searx.engines.brave: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'search.brave.com')) False
+2026-08-07 13:33:34,522 WARNING:searx.engines.wikipedia: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'fr.wikipedia.org')) False
+2026-08-07 13:33:34,523 WARNING:searx.engines.duckduckgo: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'html.duckduckgo.com')) False
+2026-08-07 13:33:34,531 WARNING:searx.engines.startpage: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.startpage.com')) False
+2026-08-07 13:33:34,540 WARNING:searx.engines.brave: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'search.brave.com')) False
+2026-08-07 13:33:34,541 WARNING:searx.engines.google cse: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.google.com')) False
+2026-08-07 13:34:46,236 WARNING:searx.engines.wikipedia: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'fr.wikipedia.org')) False
+2026-08-07 13:34:46,702 WARNING:searx.engines.startpage: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.startpage.com')) False
+2026-08-07 13:34:46,707 WARNING:searx.engines.duckduckgo: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'html.duckduckgo.com')) False
+2026-08-07 13:34:46,752 WARNING:searx.engines.brave: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'search.brave.com')) False
+2026-08-07 13:34:46,761 WARNING:searx.engines.google cse: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.google.com')) False
+2026-08-07 13:34:59,549 WARNING:searx.engines.duckduckgo: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'html.duckduckgo.com')) False
+2026-08-07 13:34:59,555 WARNING:searx.engines.wikipedia: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'fr.wikipedia.org')) False
+2026-08-07 13:34:59,571 WARNING:searx.engines.startpage: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.startpage.com')) False
+2026-08-07 13:34:59,590 WARNING:searx.engines.brave: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'search.brave.com')) False
+2026-08-07 13:34:59,599 WARNING:searx.engines.google cse: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.google.com')) False
+2026-08-07 13:37:07,292 WARNING:searx.engines.duckduckgo: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'html.duckduckgo.com')) False
+2026-08-07 13:37:07,330 WARNING:searx.engines.startpage: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.startpage.com')) False
+2026-08-07 13:37:07,336 WARNING:searx.engines.wikipedia: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'en.wikipedia.org')) False
+2026-08-07 13:37:07,341 WARNING:searx.engines.brave: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'search.brave.com')) False
+2026-08-07 13:37:07,342 WARNING:searx.engines.google cse: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.google.com')) False
+2026-08-07 13:37:31,546 WARNING:searx.engines.duckduckgo: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'html.duckduckgo.com')) False
+2026-08-07 13:37:31,555 WARNING:searx.engines.wikipedia: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'en.wikipedia.org')) False
+2026-08-07 13:37:31,573 WARNING:searx.engines.startpage: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.startpage.com')) False
+2026-08-07 13:37:31,573 WARNING:searx.engines.google cse: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.google.com')) False
+2026-08-07 13:37:31,583 WARNING:searx.engines.brave: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'search.brave.com')) False
+2026-08-07 13:37:45,184 WARNING:searx.engines.wikipedia: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'en.wikipedia.org')) False
+2026-08-07 13:37:45,276 WARNING:searx.engines.bing: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.bing.com')) False
+2026-08-07 13:37:45,359 WARNING:searx.engines.mojeek: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.mojeek.com')) False
+2026-08-07 13:37:45,420 WARNING:searx.engines.yahoo: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'search.yahoo.com')) False
+2026-08-07 13:37:45,488 WARNING:searx.engines.qwant: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'api.qwant.com')) False
+2026-08-07 13:37:45,575 WARNING:searx.engines.yep: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'api.yep.com')) False
+2026-08-07 13:37:45,634 WARNING:searx.engines.duckduckgo: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'html.duckduckgo.com')) False
+2026-08-07 13:37:45,714 WARNING:searx.engines.startpage: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.startpage.com')) False
+2026-08-07 13:37:45,777 WARNING:searx.engines.brave: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'search.brave.com')) False
+2026-08-07 13:37:45,838 WARNING:searx.engines.google cse: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.google.com')) False
+2026-08-07 13:37:54,865 WARNING:searx.engines.brave: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'search.brave.com')) False
+2026-08-07 13:37:54,887 WARNING:searx.engines.wikipedia: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'fr.wikipedia.org')) False
+2026-08-07 13:37:54,891 WARNING:searx.engines.google cse: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.google.com')) False
+2026-08-07 13:37:54,893 WARNING:searx.engines.startpage: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.startpage.com')) False
+2026-08-07 13:37:54,898 WARNING:searx.engines.duckduckgo: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'html.duckduckgo.com')) False
+2026-08-07 13:38:13,672 WARNING:searx.engines.duckduckgo: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'html.duckduckgo.com')) False
+2026-08-07 13:38:13,683 WARNING:searx.engines.wikipedia: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'en.wikipedia.org')) False
+2026-08-07 13:38:13,695 WARNING:searx.engines.brave: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'search.brave.com')) False
+2026-08-07 13:38:13,699 WARNING:searx.engines.startpage: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.startpage.com')) False
+2026-08-07 13:38:13,701 WARNING:searx.engines.google cse: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.google.com')) False
+2026-08-07 13:38:23,149 WARNING:searx.engines.wikipedia: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'en.wikipedia.org')) False
+2026-08-07 13:38:23,166 WARNING:searx.engines.duckduckgo: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'html.duckduckgo.com')) False
+2026-08-07 13:38:23,171 WARNING:searx.engines.brave: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'search.brave.com')) False
+2026-08-07 13:38:23,172 WARNING:searx.engines.google cse: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.google.com')) False
+2026-08-07 13:38:23,180 WARNING:searx.engines.startpage: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.startpage.com')) False
+2026-08-07 13:38:31,272 WARNING:searx.engines.duckduckgo: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'html.duckduckgo.com')) False
+2026-08-07 13:38:31,293 WARNING:searx.engines.google cse: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.google.com')) False
+2026-08-07 13:38:31,308 WARNING:searx.engines.wikipedia: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'en.wikipedia.org')) False
+2026-08-07 13:38:31,309 WARNING:searx.engines.startpage: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.startpage.com')) False
+2026-08-07 13:38:31,314 WARNING:searx.engines.brave: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'search.brave.com')) False
+2026-08-07 13:39:48,586 WARNING:searx.engines.wikipedia: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'en.wikipedia.org')) False
+2026-08-07 13:39:48,610 WARNING:searx.engines.duckduckgo: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'html.duckduckgo.com')) False
+2026-08-07 13:39:48,627 WARNING:searx.engines.startpage: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.startpage.com')) False
+2026-08-07 13:39:48,632 WARNING:searx.engines.google cse: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'www.google.com')) False
+2026-08-07 13:39:48,632 WARNING:searx.engines.brave: ErrorContext('.codex-venv\\Lib\\site-packages\\httpx\\_transports\\default.py', 118, 'raise mapped_exc(message) from exc', 'httpx.ConnectError', None, (None, None, 'search.brave.com')) False
